@@ -1,0 +1,9 @@
+{
+  "name": "synergy-eoc",
+  "private": true,
+  "dependencies": {
+    "angularjs": "~> 1.2.22",
+    "jquery": "~2.1.1",
+    "lodash": "~2.4.1"
+  }
+}
