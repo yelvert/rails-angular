@@ -1,5 +1,5 @@
 {
-  "name": "synergy-eoc",
+  "name": "demo-app",
   "private": true,
   "dependencies": {
     "angularjs": "~> 1.2.22",

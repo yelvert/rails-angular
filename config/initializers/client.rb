@@ -1,1 +1,1 @@
-SynergyEoc::CLIENT_PACKAGE = JSON.load(File.read(File.join(Rails.root, 'package.json')))
+CLIENT_PACKAGE = JSON.load(File.read(File.join(Rails.root, 'package.json')))

@@ -1,7 +1,7 @@
 {
-  "name": "synergy-eoc",
+  "name": "demo-app",
   "version": "0.0.1",
-  "description": "SynergyEOC",
+  "description": "DemoApp",
   "scripts": {},
   "author": "Taylor Yelverton",
   "devDependencies": {

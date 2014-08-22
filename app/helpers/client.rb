@@ -12,7 +12,7 @@ module Client
   end
 
   def client_version
-    client_version = SynergyEoc::CLIENT_PACKAGE['version']
+    client_version = CLIENT_PACKAGE['version']
   end
 
   def client_versioned_style(page)
