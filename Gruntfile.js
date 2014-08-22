@@ -7,10 +7,6 @@ module.exports = function (grunt) {
         'client/bower_components/lodash/dist/lodash.js'
       ],
       cwd: 'app'
-    },
-    home: {
-      src: ['home/*.js'],
-      cwd: 'app'
     }
   };
 
@@ -20,24 +16,58 @@ module.exports = function (grunt) {
     fileblocks: {
       options: {
         removeFiles: true,
-      },
-      main: {
-        src: 'app/views/home/_client.html.erb',
-        blocks: fileblocks
+      }
+    },
+
+    bump: {
+      options: {
+        files: ['package.json'],
+        updateConfigs: [],
+        commit: true,
+        commitMessage: 'Release %VERSION%',
+        commitFiles: ['package.json'],
+        // createTag: true,
+        // tagName: '%VERSION%',
+        // tagMessage: 'Version %VERSION%',
+        // push: true,
+        // pushTo: 'upstream',
+        // gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
       }
     },
 
     watch: {
       fileblocks: {
-        files: ['app/views/**/_client.html.erb', 'app/client/**/*.js'],
-        tasks: ['fileblocks']
+        files: ['app/client/*/index.html', 'app/client/**/*.js'],
+        tasks: ['setup_fileblocks', 'fileblocks']
       }
     }
   });
+
+  grunt.registerTask('setup_fileblocks', function () {
+    var files = grunt.file.expand('app/client/*/index.html');
+    files.forEach(function (file) {
+      var name = file.match(/([^\/]+)\/index\.html$/)[1];
+      if (name) {
+        if (!fileblocks[name]) {
+          fileblocks[name] = {
+            src: [['client', name, '**/*.js'].join('/')],
+            cwd: 'app'
+          };
+        }
+        if (!grunt.config.data.fileblocks[name]) {
+          grunt.config.data.fileblocks[name] = {
+            src: file,
+            blocks: fileblocks
+          };
+        }
+      }
+    });
+  })
   
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-wiredep');
   grunt.loadNpmTasks('grunt-file-blocks');
+  grunt.loadNpmTasks('grunt-bump');
 
-  grunt.registerTask('default', ['fileblocks:main']);
+  grunt.registerTask('default', ['setup_fileblocks', 'fileblocks']);
 };

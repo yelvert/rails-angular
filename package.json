@@ -6,6 +6,7 @@
   "author": "Taylor Yelverton",
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-bump": "0.0.15",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-file-blocks": "^0.3.0",
     "grunt-wiredep": "^1.8.0"
