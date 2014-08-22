@@ -24,14 +24,14 @@ module.exports = function (grunt) {
         files: ['package.json'],
         updateConfigs: [],
         commit: true,
-        commitMessage: 'Release %VERSION%',
+        commitMessage: 'Version %VERSION%',
         commitFiles: ['package.json'],
-        // createTag: true,
-        // tagName: '%VERSION%',
-        // tagMessage: 'Version %VERSION%',
-        // push: true,
-        // pushTo: 'upstream',
-        // gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
+        createTag: false,
+        tagName: '%VERSION%',
+        tagMessage: 'Version %VERSION%',
+        push: false,
+        pushTo: 'upstream',
+        gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
       }
     },
 
